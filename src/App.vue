@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container position-relative">
     <div class="text-center pt-3 pb-3">
       <h1 class="fw-bold text-primary text-uppercase fst-italic">{{ title }}</h1>
       <h2 class="text-secondary">{{ subtitle }}</h2>
@@ -23,6 +23,23 @@
         </div>
       </div>
     </div>
+    <nav class="position-absolute bottom-0 end-0 px-3" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -35,12 +52,18 @@ export default {
       title: 'projects',
       subtitle: 'Welcome to my Portfolio!',
       posts: [],
-      apiUrl: 'http://127.0.0.1:8000/api'
+      apiUrl: 'http://127.0.0.1:8000/api',
+      current_page: 1,
+      last_page: 3
     }
   },
   methods: {
-    getPosts() {
-      axios.get(`${this.apiUrl}/posts`).then((res) => {
+    getPosts(numPage) {
+      axios.get(`${this.apiUrl}/posts`, {
+        params: {
+          'page': numPage
+        }
+      }).then((res) => {
         // console.log(res.data.results.data);
         this.posts = res.data.results.data;
       })

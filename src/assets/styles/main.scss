@@ -7,3 +7,7 @@ $fa-font-path: '../webfonts';
 @import '@fortawesome/fontawesome-free/scss/regular.scss';
 
 @import 'bootstrap/scss/bootstrap';
+
+.container {
+    background-color: $bg_color;
+}
