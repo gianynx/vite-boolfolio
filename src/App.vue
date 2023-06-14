@@ -19,6 +19,12 @@
                 {{ post.title }}
               </a>
             </div>
+            <div class="card-text text-uppercase fw-bold position-absolute top-0 start-50 translate-middle mt-4">
+              <span class="text-secondary">Technology: </span>
+              <a href="#" class="text-decoration-none text-primary">
+                {{ post.technology.name }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
