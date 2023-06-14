@@ -1,21 +1,45 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomePage from '../pages/HomePage.vue'
+import ItemList from '../pages/ItemList.vue'
+import SingleItem from '../pages/SingleItem.vue'
+import AboutUs from '../pages/AboutUs.vue'
+import Contacts from '../pages/Contacts.vue'
+import NotFound from '../pages/NotFound.vue'
+
+
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomePage
+    },
+    {
+      path: '/items',
+      name: 'items',
+      component: ItemList
+    },
+    {
+      path: '/item/:slug',
+      name: 'item',
+      component: SingleItem
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: AboutUs
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: Contacts
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: NotFound
     }
   ]
 })
