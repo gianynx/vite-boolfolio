@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>CIAO</h1>
+    <HeaderComponent />
   </header>
 
   <main>
@@ -8,13 +8,17 @@
   </main>
 
   <footer>
-    <h2>CIAONE</h2>
+    <FooterComponent />
   </footer>
 </template>
 
 <script>
+import HeaderComponent from './components/HeaderComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
+
 export default {
-  name: 'App'
+  name: "App",
+  components: { HeaderComponent, FooterComponent }
 }
 </script>
 

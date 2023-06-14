@@ -8,6 +8,12 @@ $fa-font-path: '../webfonts';
 
 @import 'bootstrap/scss/bootstrap';
 
+// header
+header nav .navbar {
+    background-color: $navbar_bg;
+}
+
+// main
 .container {
     background-color: $bg_color;
 }
