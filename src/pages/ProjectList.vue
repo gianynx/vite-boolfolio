@@ -11,7 +11,7 @@
                             <div class="card-image">
                                 <img class="img-fluid" :src="post.image" :alt="post.title">
                             </div>
-                            <div class="card-title text-uppercase position-absolute bottom-0 end-0 fw-bold fs-5 pb-3 px-4">
+                            <div class="card-title text-uppercase position-absolute bottom-0 end-0 fw-bold pb-3 px-4">
                                 <span class="text-secondary">Project name: </span>
                                 <span class="text-primary">{{ post.title }}</span>
                             </div>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { store } from '../store';
 import axios from 'axios';
 export default {
     'name': 'ProjectList',
@@ -56,14 +57,13 @@ export default {
         return {
             title: 'projects',
             posts: [],
-            apiUrl: 'http://127.0.0.1:8000/api',
             current_page: 1,
             last_page: 3
         }
     },
     methods: {
         getPosts(numPage) {
-            axios.get(`${this.apiUrl}/posts`, {
+            axios.get(`${store.apiUrl}/posts`, {
                 params: {
                     'page': numPage
                 }
