@@ -13,7 +13,7 @@
                 <img class="img-fluid" :src="post.image" :alt="post.title">
               </a>
             </div>
-            <div class="card-title text-uppercase fw-bold position-absolute bottom-0 end-0 fs-5 px-4">
+            <div class="card-title text-uppercase fw-bold position-absolute bottom-0 start-0 fs-5 px-4 pb-3">
               <span class="text-secondary">Project name: </span>
               <a href="#" class="text-decoration-none text-primary">
                 {{ post.title }}
@@ -26,17 +26,15 @@
     <nav class="position-absolute bottom-0 end-0 px-3" aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
+          <button class="page-link" @click="getPosts(current_page - 1)" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
-          </a>
+          </button>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li> -->
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+          <button class="page-link" @click="getPosts(current_page + 1)" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
@@ -66,6 +64,8 @@ export default {
       }).then((res) => {
         // console.log(res.data.results.data);
         this.posts = res.data.results.data;
+        this.current_page = res.data.results.current_page;
+        this.last_page = res.data.results.last_page;
       })
     }
   },
