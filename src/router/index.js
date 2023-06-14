@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../pages/HomePage.vue'
-import ItemList from '../pages/ItemList.vue'
-import SingleItem from '../pages/SingleItem.vue'
+import ProjectList from '../pages/ProjectList.vue'
+import SingleProject from '../pages/SingleProject.vue'
 import AboutUs from '../pages/AboutUs.vue'
 import Contacts from '../pages/Contacts.vue'
 import NotFound from '../pages/NotFound.vue'
@@ -17,14 +17,14 @@ const router = createRouter({
       component: HomePage
     },
     {
-      path: '/items',
-      name: 'items',
-      component: ItemList
+      path: '/projects',
+      name: 'projects',
+      component: ProjectList
     },
     {
-      path: '/item/:slug',
-      name: 'item',
-      component: SingleItem
+      path: '/post/:slug',
+      name: 'project',
+      component: SingleProject
     },
     {
       path: '/about',

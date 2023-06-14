@@ -1,8 +1,8 @@
 <template>
     <header>
         <div class="container">
-            <nav class="navbar pt-4">
-                <nav class="navbar navbar-expand-lg">
+            <nav class="navbar pt-4 pb-4">
+                <nav class="navbar navbar-expand-lg mx-auto">
                     <!-- <a class="navbar-brand" href="#">Portfolio</a> -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav px-5">
                             <li class="nav-item px-5" v-for="(link, index) in navbar" :key="index">
-                                <router-link :to="{ name: link.routeName }" class="nav-link">
+                                <router-link :to="{ name: link.routeName }" class="nav-link" active-class="active">
                                     {{ link.label }}
                                 </router-link>
                             </li>
@@ -34,8 +34,8 @@ export default {
                     routeName: 'home'
                 },
                 {
-                    label: 'Items',
-                    routeName: 'items'
+                    label: 'Projects',
+                    routeName: 'projects'
                 },
                 {
                     label: 'About',
