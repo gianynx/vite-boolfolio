@@ -8,21 +8,15 @@ $fa-font-path: '../webfonts';
 
 @import 'bootstrap/scss/bootstrap';
 
-.container {
-    background-color: $bg_color;
-}
-
-// header
-header nav .navbar {
-    background-color: $navbar_bg;
-}
-
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show {
-    background-color: $active_bg;
-}
-
 // main
+main {
+    background-color: $main_bg_color;
+
+    .container {
+        background-color: $container_bg_color;
+    }
+}
+
 .card {
     cursor: pointer;
 }

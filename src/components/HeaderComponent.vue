@@ -1,25 +1,22 @@
 <template>
     <header>
-        <div class="container">
-            <nav class="navbar pt-4 pb-4">
-                <nav class="navbar navbar-expand-lg mx-auto">
-                    <!-- <a class="navbar-brand" href="#">Portfolio</a> -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav px-5">
-                            <li class="nav-item px-5" v-for="(link, index) in navbar" :key="index">
-                                <router-link :to="{ name: link.routeName }" class="nav-link" active-class="active">
-                                    {{ link.label }}
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+        <nav class="navbar pt-4 pb-4">
+            <nav class="navbar navbar-expand-lg mx-auto">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav px-5">
+                        <li class="nav-item text-uppercase px-5" v-for="(link, index) in navbar" :key="index">
+                            <router-link :to="{ name: link.routeName }" class="nav-link" active-class="active">
+                                {{ link.label }}
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
             </nav>
-        </div>
+        </nav>
     </header>
 </template>
 
@@ -51,4 +48,17 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+    background-color: #8e81f4;
+
+    nav .navbar {
+        background-color: #e3f2fd;
+    }
+
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link.show {
+        background-color: #3a90ff;
+    }
+}
+</style>
