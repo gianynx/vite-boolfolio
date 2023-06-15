@@ -3,11 +3,12 @@
         <LoaderComponent v-if="loading" />
         <div class="container position-relative" v-if="!loading">
             <div class="position-absolute top-0 end-0 px-3 mt-3">
-                <select class="form-select" aria-label="Default select example" v-model="selectedTechnology">
+                <!-- <select name="technology" id="technology" class="form-select" aria-label="Default select example"
+                    v-model="selectedTechnology">
                     <option :value="technology.id" v-for="(technology, index) in technologies" :key="technology.id">
                         {{ technology.name }}
                     </option>
-                </select>
+                </select> -->
             </div>
             <div class="text-center pt-3 pb-3">
                 <h1 class="fw-bold text-primary text-uppercase fst-italic">{{ title }}</h1>
@@ -89,5 +90,6 @@ export default {
 <style lang="scss" scoped>
 .form-select {
     width: 4rem;
+    cursor: pointer;
 }
 </style>
