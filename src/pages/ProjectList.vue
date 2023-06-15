@@ -1,6 +1,7 @@
 <template>
     <main>
-        <div class="container position-relative">
+        <LoaderComponent v-if="loading" />
+        <div class="container position-relative" v-if="!loading">
             <div class="text-center pt-3 pb-3">
                 <h1 class="fw-bold text-primary text-uppercase fst-italic">{{ title }}</h1>
             </div>
@@ -28,40 +29,50 @@
 </template>
 
 <script>
-import { store } from '../store';
+import { store } from '../data/store';
 import axios from 'axios';
 import CardComponent from '../components/CardComponent.vue';
+import LoaderComponent from '../components/LoaderComponent.vue';
 export default {
     name: 'ProjectList',
     data() {
         return {
+            store,
             title: "projects",
             components: {
-                CardComponent
+                CardComponent,
+                LoaderComponent
             },
             posts: [],
             current_page: 1,
-            last_page: 3
+            last_page: 3,
+            loading: true
         };
     },
     methods: {
         getPosts(numPage) {
+            let params = {
+                'page': numPage
+            }
             axios.get(`${store.apiUrl}/posts`, {
-                params: {
-                    "page": numPage
-                }
+                params
+
             }).then((res) => {
-                // console.log(res.data.results.data);
+                // console.log(res);
                 this.posts = res.data.results.data;
                 this.current_page = res.data.results.current_page;
                 this.last_page = res.data.results.last_page;
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+                this.loading = false;
             });
         }
     },
     mounted() {
         this.getPosts();
     },
-    components: { CardComponent }
+    components: { CardComponent, LoaderComponent }
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
     <main>
-        <div class="container text-center pt-3 pb-3">
+        <LoaderComponent v-if="loading" />
+        <div class="container text-center pt-3 pb-3" v-if="!loading">
             <div v-if="project">
                 <div class="pt-3 pb-3">
                     <h1 class="fw-bold text-primary text-uppercase fst-italic">{{ project.title }}</h1>
@@ -16,31 +17,46 @@
 </template>
 
 <script>
-import { store } from '../store';
+import { store } from '../data/store';
 import axios from 'axios';
+import LoaderComponent from '../components/LoaderComponent.vue';
 export default {
     name: 'SingleProject',
     data() {
         return {
             store,
-            project: null
+            components: {
+                LoaderComponent
+            },
+            project: null,
+            loading: true
         }
     },
     methods: {
         getProject() {
             axios.get(`${store.apiUrl}/posts/${this.$route.params.slug}`).then((res) => {
                 // console.log(res.data.results);
-                if (res.data.results) {
-                    this.project = res.data.results;
-                } else {
-                    this.$route.push({ name: "not-found" })
-                }
+
+                // if (res.data.results) {
+                //     this.project = res.data.results;
+                // } else {
+                //     this.$route.push({ name: "not-found" })
+                // }
+
+                this.project = res.data.results;
+            }).catch((error) => {
+                // console.log(error);
+                // console.log(error.response.data);
+                this.$router.push({ name: 'not-found', query: { e: error.response.data.message } })
+            }).finally(() => {
+                this.loading = false;
             });
         }
     },
     mounted() {
         this.getProject();
-    }
+    },
+    components: { LoaderComponent }
 }
 </script>
 
