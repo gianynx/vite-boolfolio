@@ -6,14 +6,19 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav px-5">
-                        <li class="nav-item text-uppercase px-5" v-for="(link, index) in navbar" :key="index">
+                <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-5" v-for="(link, index) in navbar" :key="index">
                             <router-link :to="{ name: link.routeName }" class="nav-link" active-class="active">
                                 {{ link.label }}
                             </router-link>
                         </li>
                     </ul>
+                    <div class="px-5">
+                        <a href="http://localhost:8000" class="nav-link">
+                            <i class="fa-solid fa-user"></i> <span>reserved area</span>
+                        </a>
+                    </div>
                 </div>
             </nav>
         </nav>
