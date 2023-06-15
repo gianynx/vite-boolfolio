@@ -2,6 +2,13 @@
     <main>
         <LoaderComponent v-if="loading" />
         <div class="container position-relative" v-if="!loading">
+            <div class="position-absolute top-0 end-0 px-3 mt-3">
+                <select class="form-select" aria-label="Default select example" v-model="selectedTechnology">
+                    <option :value="technology.id" v-for="(technology, index) in technologies" :key="technology.id">
+                        {{ technology.name }}
+                    </option>
+                </select>
+            </div>
             <div class="text-center pt-3 pb-3">
                 <h1 class="fw-bold text-primary text-uppercase fst-italic">{{ title }}</h1>
             </div>
@@ -44,9 +51,11 @@ export default {
                 LoaderComponent
             },
             posts: [],
+            technologies: [],
             current_page: 1,
             last_page: 3,
-            loading: true
+            loading: true,
+            selectedTechnology: ''
         };
     },
     methods: {
@@ -59,9 +68,10 @@ export default {
 
             }).then((res) => {
                 // console.log(res);
-                this.posts = res.data.results.data;
-                this.current_page = res.data.results.current_page;
-                this.last_page = res.data.results.last_page;
+                this.posts = res.data.results.posts.data;
+                this.technologies = res.data.results.technologies;
+                this.current_page = res.data.results.posts.current_page;
+                this.last_page = res.data.results.posts.last_page;
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
@@ -76,4 +86,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.form-select {
+    width: 4rem;
+}
+</style>
