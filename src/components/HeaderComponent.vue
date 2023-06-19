@@ -1,20 +1,20 @@
 <template>
     <header>
         <nav class="navbar pt-4 pb-4">
-            <nav class="navbar navbar-expand-lg mx-auto">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="navbar navbar-expand-lg w-100">
+                <button class="navbar-toggler mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" @click="show = !show">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item px-5" v-for="(link, index) in navbar" :key="index">
+                <div class="collapse navbar-collapse text-uppercase" id="navbarNav" :class="{ 'show': show }">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item px-3" v-for="(link, index) in navbar" :key="index">
                             <router-link :to="{ name: link.routeName }" class="nav-link" active-class="active">
                                 {{ link.label }}
                             </router-link>
                         </li>
                     </ul>
-                    <div class="px-5">
+                    <div class="px-3">
                         <a href="http://localhost:8000" class="nav-link">
                             <i class="fa-solid fa-user"></i> <span>reserved area</span>
                         </a>
@@ -40,14 +40,15 @@ export default {
                     routeName: 'projects'
                 },
                 {
-                    label: 'About',
+                    label: 'About Us',
                     routeName: 'about'
                 },
                 {
                     label: 'Contacts',
                     routeName: 'contacts'
                 }
-            ]
+            ],
+            show: false
         }
     }
 }

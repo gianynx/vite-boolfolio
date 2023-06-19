@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-3 mb-3">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mx-auto mt-3 mb-3">
         <div class="card w-100 h-100 mx-auto">
             <div class="card-body position-relative">
                 <div class="card-image">
@@ -9,7 +9,7 @@
                     <span class="text-secondary">Project name: </span>
                     <span class="text-primary">{{ post.title }}</span>
                 </div>
-                <div class="card-text text-uppercase position-absolute top-0 end-0 fw-bold pt-3 px-4">
+                <div class="card-text text-uppercase position-absolute top-0 start-0 fw-bold pt-3 px-4">
                     <span class="text-secondary">Technology: </span>
                     <span class="text-primary">{{ post.technology.name }}</span>
                 </div>
