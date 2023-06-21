@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import { store } from '../data/store';
 import axios from 'axios';
+import { store } from '../data/store';
 import CardComponent from '../components/CardComponent.vue';
 import LoaderComponent from '../components/LoaderComponent.vue';
 export default {

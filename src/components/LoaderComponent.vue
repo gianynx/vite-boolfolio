@@ -24,17 +24,17 @@ export default {
 
     &:first-child {
         animation: bounce 0.8s infinite;
-        background-color: $bg_blue;
+        background-color: $primary_color;
     }
 
     &:nth-child(2) {
         animation: bounce 0.8s infinite 0.2s;
-        background-color: $bg_blue;
+        background-color: $primary_color;
     }
 
     &:last-child {
         animation: bounce 0.8s infinite 0.4s;
-        background-color: $bg_blue;
+        background-color: $primary_color;
     }
 }
 

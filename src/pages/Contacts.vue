@@ -40,9 +40,7 @@
                     Message sent with success!
                 </div>
                 <div class="d-grid mt-5 mb-5">
-                    <button type="submit" class="btn btn-outline-primary text-uppercase" :disabled="loading">
-                        {{ loading ? 'Sending...' : 'Send' }}
-                    </button>
+                    <button type="submit" class="btn btn-outline-primary text-uppercase">send</button>
                 </div>
             </form>
         </div>
@@ -61,7 +59,7 @@ export default {
             address: '',
             name: '',
             message: '',
-            loading: false,
+            loading: true,
             success: false,
             errors: {}
         }
@@ -88,7 +86,6 @@ export default {
                     this.address = '';
                     this.message = '';
                 }
-                this.loading = false;
             });
         }
     }
