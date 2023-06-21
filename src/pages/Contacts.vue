@@ -36,7 +36,7 @@
                         {{ error }}
                     </p>
                 </div>
-                <div v-if="success" class="alert alert-success text-start" role="alert">
+                <div v-if="success" class="alert alert-success text-center text-uppercase" role="alert">
                     Message sent with success!
                 </div>
                 <div class="d-grid mt-5 mb-5">
