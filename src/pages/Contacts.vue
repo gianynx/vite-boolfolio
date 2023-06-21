@@ -2,9 +2,6 @@
     <main>
         <div class="container text-center pt-3 pb-3">
             <h1 class="fw-bold text-primary text-uppercase fst-italic">{{ title }}</h1>
-            <div v-if="success" class="alert alert-success text-start" role="alert">
-                Message sent with success!
-            </div>
             <form @submit.prevent="sendForm()" class="mt-3">
                 <div class="mb-3">
                     <label for="address" class="form-label text-white">Email address</label>
@@ -38,6 +35,9 @@
                     <p v-for="(error, index) in errors.message" :key="`message-error-${index}`" class="invalid-feedback">
                         {{ error }}
                     </p>
+                </div>
+                <div v-if="success" class="alert alert-success text-start" role="alert">
+                    Message sent with success!
                 </div>
                 <div class="d-grid mt-5 mb-5">
                     <button type="submit" class="btn btn-outline-primary text-uppercase" :disabled="loading">
@@ -81,7 +81,7 @@ export default {
                 // console.log(res.data);
                 this.success = res.data.success;
                 if (!this.success) {
-                    this.errors = response.data.errors;
+                    this.errors = res.data.errors;
                 } else {
                     // ripulisco i campi di input
                     this.name = '';
