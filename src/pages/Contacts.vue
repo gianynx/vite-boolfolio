@@ -5,11 +5,16 @@
             <form @submit.prevent="sendForm()" class="mt-3">
                 <div class="mb-3">
                     <label for="address" class="form-label text-white">Email address</label>
+
+                    <!-- Se ci sono errori associati al campo "address", verrà applicata la classe 'is-invalid'. -->
                     <input type="email" name="address" id="address" v-model="address" class="form-control"
                         :class="{ 'is-invalid': errors.address }">
                     <div id="address" class="form-text text-secondary">
                         We'll never share your email with anyone else.
                     </div>
+
+                    <!--  Questo blocco di codice crea un paragrafo (<p>) per ogni messaggio di errore associato al campo "address". Ogni paragrafo conterrà il testo del messaggio di errore specifico.
+                        Questi paragrafi saranno visualizzati sotto l'input del campo "address" e saranno evidenziati con uno stile specifico grazie alla classe CSS "invalid-feedback". -->
                     <p v-for="(error, index) in errors.address" :key="`message-error-${index}`" class="invalid-feedback">
                         {{ error }}
                     </p>
